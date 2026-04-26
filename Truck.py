@@ -4,7 +4,7 @@ class Truck(Vehicle):
 
     def __init__(self, license_plate, brand, rental_fee):
         super().__init__(license_plate, brand, rental_fee)
-        self._extras=["cargo_weight", "cargo_volume"]
+        self._extras=["Dízel üzem", "B kategóriával vezethető"]
 
     @property
     def license_plate(self):
@@ -22,6 +22,9 @@ class Truck(Vehicle):
     def is_booked(self):
         return self._is_booked
 
+    @property
+    def extras(self):
+        return self._extras
 
     def book_vehicle(self):
         if not self._is_booked:
@@ -32,5 +35,7 @@ class Truck(Vehicle):
     def unbook_vehicle(self):
         if self._is_booked:
             self._is_booked = False
+            return True
         else:
             print("Az autó nincs kibérelve jelenleg!")
+            return False

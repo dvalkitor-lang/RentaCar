@@ -6,7 +6,7 @@ class Vehicle(ABC):
         self._brand = brand
         self._rental_fee = rental_fee
         self._is_booked = False
-        self.extras = []
+        self._extras = []
 
 
     def book_vehicle(self):

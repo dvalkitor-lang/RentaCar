@@ -1,6 +1,3 @@
-from CarRent.Vehicle import Vehicle
-
-
 class Rental:
     def __init__(self, name):
         self._name = name
@@ -13,7 +10,12 @@ class Rental:
     @property
     def vehicles(self):
         for vehicle in self._vehicles:
-            print(f"Gépjármű típusa: {vehicle.brand}, Rendszáma: {vehicle.license_plate}, Bérleti díj: {vehicle.rental_fee}, Kibérelve: {vehicle.is_booked}")
+            extras_text = ", ".join(vehicle.extras)
+            print(f"Gépjármű típusa: {vehicle.brand},"
+                  f" Rendszáma: {vehicle.license_plate}, "
+                  f"Bérleti díj: {vehicle.rental_fee}, "
+                  f"Extrák: {vehicle.extras}, "
+                  f"Kibérelve: {vehicle.is_booked}")
 
     @vehicles.setter
     def vehicles(self, new_rent):
@@ -22,10 +24,14 @@ class Rental:
     def book_by_license_plate(self, license_plate):
         for vehicle in self._vehicles:
             if vehicle.license_plate == license_plate:
-                vehicle.book_vehicle()
+                return vehicle.book_vehicle()
+        print("Nincs ilyen rendszámú jármű.")
+        return False
+
 
     def unbook_by_license_plate(self, license_plate):
         for vehicle in self._vehicles:
             if vehicle.license_plate == license_plate:
-                vehicle.unbook_vehicle()
-
+                return vehicle.unbook_vehicle()
+        print("Nincs ilyen rendszámú jármű.")
+        return False
