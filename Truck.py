@@ -29,8 +29,10 @@ class Truck(Vehicle):
     def book_vehicle(self):
         if not self._is_booked:
             self._is_booked = True
+            return True
         else:
             print("Az autó ki van bérelve jelenleg!")
+            return False
 
     def unbook_vehicle(self):
         if self._is_booked:

@@ -38,8 +38,9 @@ class Booking:
                     license_plate = input("Add meg a rendszámot: ").upper()
                     success = self._rental.book_by_license_plate(license_plate)
                     if success:
-                        print("Bérlés sikeres.")
-
+                        for v in self._rental._vehicles:
+                            if v.license_plate == license_plate:
+                                print(f"Bérlés sikeres. Napi díj: {v.rental_fee} Ft")
                 elif menu == 3:
                     license_plate = input("Add meg a rendszámot!").upper()
                     success = self._rental.unbook_by_license_plate(license_plate)

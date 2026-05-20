@@ -28,7 +28,6 @@ class Rental:
         print("Nincs ilyen rendszámú jármű.")
         return False
 
-
     def unbook_by_license_plate(self, license_plate):
         for vehicle in self._vehicles:
             if vehicle.license_plate == license_plate:
